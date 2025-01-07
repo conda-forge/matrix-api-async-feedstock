@@ -1,5 +1,4 @@
 {% set name = "matrix-api-async" %}
-{% set pypi_file_name = "matrix_api_async" %}
 {% set version = "0.1.0" %}
 
 
@@ -8,23 +7,26 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ pypi_file_name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/matrix_api_async-{{ version }}.tar.gz
   sha256: 8361fd8ffabce911b2f7a43bfdce1b2d7dad8d9a0ff396401f5951109943bd75
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.5
+    - python {{ python_min }}
+    - setuptools
   run:
     - matrix_client
-    - python >=3.5
+    - python >={{ python_min }}
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - matrix_api_async
 
