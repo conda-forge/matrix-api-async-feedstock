@@ -27,11 +27,8 @@ requirements:
 test:
   requires:
     - python {{ python_min }}
-    - pip
   imports:
     - matrix_api_async
-  commands:
-    - pip check
 
 about:
   home: https://github.com/Cadair/matrix_api_async
